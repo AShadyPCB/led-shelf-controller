@@ -30,7 +30,7 @@ flowchart LR
   BLE["RNBD350 BLE (U2)"]
 
   MCU -->|"PWMA, PWMB, ENA, ENB, NSLEEP"| U1
-  MCU <-->|"UART (J4)"| BLE
+  BLE <-->|"UART (J4)"|MCU
   U1 -->|"GHA / GLA"| HBA
   U1 -->|"GHB / GLB"| HBB
   PWR --> U1
