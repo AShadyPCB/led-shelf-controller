@@ -27,7 +27,7 @@ So I opened it up and put it on the bench.
 ## Reverse Engineering the Original
 
 <p align="center">
-  <img src="media/IMAGES/og_current_draw_measurement.jpeg" width="600" alt="Measuring strip current draw at max brightness">
+  <img src="media/IMAGES/og_bench_differential_probing.jpeg" width="600" alt="Probing the original controller outputs on the bench">
 </p>
 
 Probing the two output lines (SHA and SHB) showed how it works. The controller takes 24 V in from the brick, but it drives the strip differentially: the two lines swap polarity, so the strip sees either +24 V or -24 V across it. The strip has two anti-parallel LED strings, so one polarity lights the warm (orange) LEDs and the other lights the cool white ones.
@@ -36,29 +36,24 @@ Probing the two output lines (SHA and SHB) showed how it works. The controller t
 |---|---|
 | Fully warm, output dwells on one polarity | <img src="media/IMAGES/og_waveform_fully_warm.png" width="420"> |
 | Fully cool, output dwells on the opposite polarity | <img src="media/IMAGES/og_waveform_fully_cool.png" width="420"> |
-| Mixed colour, SHA/SHB alternating | <img src="media/IMAGES/og_waveform_sha_shb_closeup.png" width="420"> |
+| Mixed colour (50/50), low brightness, 0 V dwell between polarity flips | <img src="media/IMAGES/og_waveform_lowbrightness.png" width="420"> |
+
+These are all differential (SHA-SHB) measurements. The warm and cool captures are at around 75 % brightness; the mixed one is at low brightness, which makes the 0 V dwell easy to see.
 
 Colour comes from the ratio of time spent at +24 V versus -24 V. Brightness comes from inserting 0 V dwell into the waveform: the more zero time, the dimmer the strip.
 
-Here is the differential (SHA-SHB) measurement at max brightness in 50/50 colour mode:
-
-<p align="center">
-  <img src="media/IMAGES/og_fft_5050_max_differential.png" width="600" alt="Differential ±24V waveform across the strip at max brightness">
-</p>
-
 ### Why it whines
 
-The switching fundamental sits at 2 kHz, right in the audible range where our hearing is most sensitive. An FFT of the output shows that fundamental plus a comb of harmonics running up through the audible band:
+The switching fundamental sits at 2 kHz, right in the audible range where our hearing is most sensitive. Here is the differential measurement at max brightness in 50/50 colour mode with an FFT underneath: the fundamental plus a comb of harmonics running up through the audible band.
 
 <p align="center">
-  <img src="media/IMAGES/og_fft_5050_sha_shb.png" width="600" alt="FFT of original controller output: 2kHz fundamental plus audible harmonics">
+  <img src="media/IMAGES/og_fft_5050_max_differential.png" width="600" alt="Differential waveform across the strip at max brightness, FFT showing 2kHz fundamental plus audible harmonics">
 </p>
 
 The dimming behaviour makes sense in the frequency domain too. Adding 0 V dwell for brightness control breaks the symmetry of the waveform, and that pushes energy into extra harmonics. At low brightness the 4th, 8th, and 12th harmonics grow noticeably:
 
 <p align="center">
-  <img src="media/IMAGES/og_waveform_lowbrightness.png" width="420" alt="Time-domain waveform at low brightness showing zero-dwell insertion">
-  <img src="media/IMAGES/og_fft_lowbrightness_harmonics.png" width="420" alt="FFT at low brightness: 4th, 8th and 12th harmonics increased">
+  <img src="media/IMAGES/og_fft_lowbrightness_harmonics.png" width="600" alt="FFT at low brightness: 4th, 8th and 12th harmonics increased">
 </p>
 
 So there is more audible harmonic energy at exactly the brightness you'd actually run the shelf at. That is the whine. The magnetics and ceramic caps on the board turn that electrical spectrum into an acoustic one.
