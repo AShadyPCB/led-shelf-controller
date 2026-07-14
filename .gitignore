@@ -53,3 +53,23 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# --- STM32CubeIDE / firmware build ---
+Debug/
+Release/
+.settings/
+.metadata/
+*.list
+# Keep committing the CubeIDE project descriptors (.project, .cproject, *.ioc)
+# and linker scripts (*.ld) — they are source, not build output.
+
+# --- Altium Designer ---
+History/
+__Previews/
+Project Logs*/
+Project Outputs*/
+*.SchDocPreview
+*.PcbDocPreview
+# Altium local backups (the *.SchDoc / *.PcbDoc / *.PrjPcb sources ARE committed)
+*.~*
+~$*
