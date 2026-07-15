@@ -94,7 +94,6 @@ Sliding the colour ratio stretches one side of the window at the expense of the 
 
 <!-- TODO: link the timer configuration source file here once the firmware project is committed -->
 
-Control path: iOS app (SwiftUI) → BLE → RNBD350 → UART → STM32 → timer CCR updates → gate driver → bridge → strip.
 
 ## Build and Bring-up (Version 1)
 
