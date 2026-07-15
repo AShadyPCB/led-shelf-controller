@@ -64,7 +64,11 @@ The fix follows directly: keep the same drive scheme, but move the fundamental a
 
 A full bridge (H-bridge) is the natural way to recreate the ±24 V / 0 V drive. It's the same topology used in motor drives. It switches the strip between +24 V and the reversed polarity, and it can hold the strip at 0 V on its own. I run the PWM fundamental at 25 kHz, which puts it and every harmonic above it out of the audible band.
 
-<!-- TODO: media/IMAGES/hbridge_gate_drive_diagram.png - Inkscape block diagram: STM32 -> MP6528 -> 4x FET bridge -> strip, rails labeled -->
+<p align="center">
+  <img src="media/IMAGES/system_diagram.png" width="850" alt="System diagram: 24V input, buck converter, BLE module, STM32, gate driver, full bridge, LED strip">
+</p>
+
+Everything runs off the 24 V brick. An MP2459 buck makes the 3.3 V rail for the STM32 and the BLE module. The phone talks to the RNBD350 over BLE, and the RNBD350 forwards commands to the STM32 over UART. The STM32's two PWM outputs feed an MP6528 gate driver, which switches the four FETs of the bridge through 15 Ω gate resistors. A 137 kΩ resistor on the driver's DT pin sets 507 ns of dead time between the high and low FET of each leg, so a leg can never shoot through during a transition (this pin shows up again in the failure section). The strip sits between the two switch nodes, SHA and SHB.
 
 | Function | Part | Notes |
 |---|---|---|
@@ -76,9 +80,19 @@ A full bridge (H-bridge) is the natural way to recreate the ±24 V / 0 V drive. 
 
 ### The PWM generation problem
 
-Standard complementary PWM only gives two states per leg, so it can't directly produce the three-level (+24 V / 0 V / -24 V) waveform while controlling the colour ratio and the zero-dwell brightness independently. My workaround uses three timers. A third timer gates the bridge legs, a NAND-like combination of the two base PWM channels, to insert the 0 V states without disturbing the polarity ratio.
+The strip needs three levels in each period: +24 V for one colour, then -24 V for the other, then 0 V for the rest of the period to set brightness. A normal complementary PWM pair only gives two states, so the waveform is synthesized from three timer channels.
 
-<!-- TODO: media/IMAGES/timer_scheme.png - matplotlib figure: two complementary PWM channels + gating timer + resulting three-level output -->
+<p align="center">
+  <img src="media/IMAGES/timer_scheme.png" width="750" alt="Three-level PWM synthesis from three timer channels over one 25 kHz period">
+</p>
+
+The timebase is straightforward. APB1 runs at 64 MHz, the prescaler divides by 64, and ARR is 39, so the counter rolls over every 40 counts. That gives a 25 kHz period made of 40 slots of 1 µs each, and the compare registers pick which slot each edge lands on. Duty resolves in steps of 1/40, so brightness and colour adjust in 2.5 % increments.
+
+Two user settings map onto two compare values. Brightness is y, the number of conducting slots out of 40. Everything past y is off time, both bridge legs idle and 0 V across the strip, so 40 - y slots of dead output is what dimming actually is. Colour is a ratio from 0 to 1 that splits the conducting window between the two sides: x = y × colour. TIM A is high from slot 0 to x and drives the +24 V side. TIM B is not a physical output at all, it exists purely as internal comparison logic with its compare set at y. TIM C produces the -24 V side using combined PWM mode 2, which yields NOT(A) · B rather than a plain AND, exactly the term needed: high only from x to y.
+
+Sliding the colour ratio stretches one side of the window at the expense of the other, and lowering y squeezes both together while growing the 0 V tail.
+
+<!-- TODO: link the timer configuration source file here once the firmware project is committed -->
 
 Control path: iOS app (SwiftUI) → BLE → RNBD350 → UART → STM32 → timer CCR updates → gate driver → bridge → strip.
 
