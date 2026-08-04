@@ -11,7 +11,7 @@ a 25&nbsp;kHz H-bridge driver with BLE control from my phone, on a custom 4 laye
   <img src="media/IMAGES/hero_shot_main.jpg" width="600" alt="Shady Electronics LED Shelf Controller v1.1, assembled board">
 </p>
 
-
+<h3 align="center">🔊 Audio demo, sound on</h3>
 
 <div align="center">
 
