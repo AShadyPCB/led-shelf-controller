@@ -39,11 +39,24 @@ So I opened it up and put it on the bench.
 
 Probing the two output lines (SHA and SHB) showed how it works. The controller takes 24 V in from the brick, but it drives the strip differentially: the two lines swap polarity, so the strip sees either +24 V or -24 V across it. The strip has two anti-parallel LED strings, so one polarity lights the warm (orange) LEDs and the other lights the cool white ones.
 
-| Mode | Capture |
-|---|---|
-| Fully warm, output dwells on one polarity | <img src="media/IMAGES/og_waveform_fully_warm.png" width="420"> |
-| Fully cool, output dwells on the opposite polarity | <img src="media/IMAGES/og_waveform_fully_cool.png" width="420"> |
-| Mixed colour (50/50), low brightness, 0 V dwell between polarity flips | <img src="media/IMAGES/og_waveform_lowbrightness.png" width="420"> |
+<table>
+  <tr>
+    <th width="30%">Mode</th>
+    <th width="70%">Capture</th>
+  </tr>
+  <tr>
+    <td>Fully warm<br><sub>one polarity</sub></td>
+    <td><img src="media/IMAGES/og_waveform_fully_warm.png" width="100%" alt="Fully warm: output dwells on one polarity"></td>
+  </tr>
+  <tr>
+    <td>Fully cool<br><sub>opposite polarity</sub></td>
+    <td><img src="media/IMAGES/og_waveform_fully_cool.png" width="100%" alt="Fully cool: output dwells on the opposite polarity"></td>
+  </tr>
+  <tr>
+    <td>Mixed 50/50<br><sub>dimmed, 0 V dwell</sub></td>
+    <td><img src="media/IMAGES/og_waveform_lowbrightness.png" width="100%" alt="Mixed colour at low brightness, 0 V dwell between polarity flips"></td>
+  </tr>
+</table>
 
 These are all differential (SHA-SHB) measurements. The warm and cool captures are at around 75 % brightness; the mixed one is at low brightness, which makes the 0 V dwell easy to see.
 
