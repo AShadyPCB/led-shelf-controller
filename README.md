@@ -83,13 +83,13 @@ A full bridge (H-bridge) is the natural way to recreate the ±24 V / 0 V drive. 
 
 Everything runs off the 24 V brick. An MP2459 buck makes the 3.3 V rail for the STM32 and the BLE module. The phone talks to the RNBD350 over BLE, and the RNBD350 forwards commands to the STM32 over UART. The STM32's two PWM outputs feed an MP6528 gate driver, which switches the four FETs of the bridge through 15 Ω gate resistors. A 137 kΩ resistor on the driver's DT pin sets 507 ns of dead time between the high and low FET of each leg, so a leg can never shoot through during a transition (this pin shows up again in the failure section). The strip sits between the two switch nodes, SHA and SHB.
 
-| Function | Part | Notes |
-|---|---|---|
-| Gate driver | **MP6528GR-Z** | 5-60 V H-bridge gate driver for four N-channel FETs. Bootstrap high-side supply with internal charge pump for 100 % duty operation, adjustable dead-time via DT pin, OCP, UVLO. QFN-28 with exposed pad. |
-| Power stage | **SQJ746ELP** ×2 | Vishay dual N-channel 40 V TrenchFET, 8.8 mΩ, PowerPAK SO-8L. Two dual packages make up the full bridge. AEC-Q101 automotive-qualified. |
-| MCU | **STM32F303K8T6** | Cortex-M4F at 72 MHz. Advanced-control timer with complementary outputs and hardware dead-time insertion generates the bridge PWM. |
-| BLE | **RNBD350PE-I/100** | Microchip Bluetooth LE 5.2 certified module. Talks to the STM32 over UART; the iOS app sends colour and brightness, and the MCU maps them to timer compare (CCR) values. |
-| Logic rail | **MP2459GJ-Z** | 55 V-input, 0.5 A, 480 kHz buck stepping the 24 V brick down to the logic rail. |
+| Part | Notes |
+|:---:|---|
+| Gate driver<br>**MP6528GR-Z** | 5-60 V H-bridge gate driver for four N-channel FETs. Bootstrap high-side supply with internal charge pump for 100 % duty operation, adjustable dead-time via DT pin, OCP, UVLO. QFN-28 with exposed pad. |
+| Power stage<br>**SQJ746ELP** ×2 | Vishay dual N-channel 40 V TrenchFET, 8.8 mΩ, PowerPAK SO-8L. Two dual packages make up the full bridge. AEC-Q101 automotive-qualified. |
+| MCU<br>**STM32F303K8T6** | Cortex-M4F at 72 MHz. Advanced-control timer with complementary outputs and hardware dead-time insertion generates the bridge PWM. |
+| BLE<br>**RNBD350PE-I/100** | Microchip Bluetooth LE 5.2 certified module. Talks to the STM32 over UART; the iOS app sends colour and brightness, and the MCU maps them to timer compare (CCR) values. |
+| Logic rail<br>**MP2459GJ-Z** | 55 V-input, 0.5 A, 480 kHz buck stepping the 24 V brick down to the logic rail. |
 
 ### The PWM generation problem
 
