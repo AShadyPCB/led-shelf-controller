@@ -86,9 +86,9 @@ Everything runs off the 24 V brick. An MP2459 buck makes the 3.3 V rail for the 
 | Part | Notes |
 |:---:|---|
 | Gate driver<br>**MP6528GR-Z** | 5-60 V H-bridge gate driver for four N-channel FETs. Bootstrap high-side supply with internal charge pump for 100 % duty operation, adjustable dead-time via DT pin, OCP, UVLO. QFN-28 with exposed pad. |
-| Power stage<br>**SQJ746ELP** ×2 | Vishay dual N-channel 40 V TrenchFET, 8.8 mΩ, PowerPAK SO-8L. Two dual packages make up the full bridge. AEC-Q101 automotive-qualified. |
-| MCU<br>**STM32F303K8T6** | Cortex-M4F at 72 MHz. Advanced-control timer with complementary outputs and hardware dead-time insertion generates the bridge PWM. |
-| BLE<br>**RNBD350PE-I/100** | Microchip Bluetooth LE 5.2 certified module. Talks to the STM32 over UART; the iOS app sends colour and brightness, and the MCU maps them to timer compare (CCR) values. |
+| Power stage<br><sub><b>SQJ746ELP ×2</b></sub> | Vishay dual N-channel 40 V TrenchFET, 8.8 mΩ, PowerPAK SO-8L. Two dual packages make up the full bridge. AEC-Q101 automotive-qualified. |
+| MCU<br><sub><b>STM32F303K8T6</b></sub> | Cortex-M4F at 72 MHz. Advanced-control timer with complementary outputs and hardware dead-time insertion generates the bridge PWM. |
+| BLE<br><sub><b>RNBD350PE-I/100</b></sub> | Microchip Bluetooth LE 5.2 certified module. Talks to the STM32 over UART; the iOS app sends colour and brightness, and the MCU maps them to timer compare (CCR) values. |
 | Logic rail<br>**MP2459GJ-Z** | 55 V-input, 0.5 A, 480 kHz buck stepping the 24 V brick down to the logic rail. |
 
 ### The PWM generation problem
