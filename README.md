@@ -4,6 +4,12 @@
 
 <h1 align="center">LED Shelf Controller</h1>
 
+
+
+https://github.com/user-attachments/assets/cedaadd6-8280-4063-97b8-99b131412597
+
+
+
 <p align="center">
 The stock controller on my LED shelf whined, and it got louder as I dimmed it.<br>
 This is how I worked out why, and the silent replacement I built to fix it:<br>
