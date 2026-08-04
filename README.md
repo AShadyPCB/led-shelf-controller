@@ -1,20 +1,22 @@
-<p align="center">
-  <img src="media/IMAGES/v1_1_pcb_hero.png" width="700" alt="Shady Electronics LED Shelf Controller v1.1, black ENIG 4-layer PCB">
-</p>
 
 <h1 align="center">LED Shelf Controller</h1>
 
-
-
-https://github.com/user-attachments/assets/cedaadd6-8280-4063-97b8-99b131412597
-
-
+<p align="center">
+  <img src="media/IMAGES/v1_1_pcb_hero.png" width="700" alt="Shady Electronics LED Shelf Controller v1.1, black ENIG 4-layer PCB">
+</p>
 
 <p align="center">
 The stock controller on my LED shelf whined, and it got louder as I dimmed it.<br>
 This is how I worked out why, and the silent replacement I built to fix it:<br>
 a 25&nbsp;kHz H-bridge driver with BLE control from my phone, on a custom 4-layer board.
 </p>
+
+
+<div align="center">
+
+https://github.com/user-attachments/assets/8797d7e5-76eb-444d-9b2b-a0c18f4ee885
+
+</div>
 
 ---
 
