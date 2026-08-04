@@ -2,7 +2,7 @@
 <h1 align="center">LED Shelf Controller</h1>
 
 <p align="center">
-  <img src="media/IMAGES/v1_1_pcb_hero.png" width="700" alt="Shady Electronics LED Shelf Controller v1.1, black ENIG 4-layer PCB">
+  <img src="media/IMAGES/hero_shot_main.jpg" width="600" alt="Shady Electronics LED Shelf Controller v1.1, assembled board">
 </p>
 
 <p align="center">
@@ -23,8 +23,6 @@ https://github.com/user-attachments/assets/8797d7e5-76eb-444d-9b2b-a0c18f4ee885
 ## The Problem
 
 The shelf is a 24 V tunable-white LED strip driven by an off-the-shelf controller. At full brightness it puts out a faint high-pitched whine. Dim it to a normal, usable level and the whine gets worse, turning into a piercing tone that's hard to ignore once you've heard it.
-
-<!-- TODO: embed hiss demo clip here (drag-drop .mp4 into web editor, <10MB, caption "🔊 sound on") -->
 
 <p align="center">
   <img src="media/IMAGES/og_board_closeup.jpeg" width="600" alt="Original controller PCB, opened up">
@@ -62,6 +60,12 @@ The dimming behaviour makes sense in the frequency domain too. Adding 0 V dwell 
 
 <p align="center">
   <img src="media/IMAGES/og_fft_lowbrightness_harmonics.png" width="600" alt="FFT at low brightness: 4th, 8th and 12th harmonics increased">
+</p>
+
+The microphone agrees. Same mic at 5 cm, 60 second averages of the acoustic spectrum, dimmed versus max brightness: the 4 kHz harmonic comes up 16 dB when the strip is dimmed.
+
+<p align="center">
+  <img src="media/IMAGES/acoustic_dim_vs_max_matlab.png" width="700" alt="Acoustic spectrum of the original controller, dimmed vs max brightness, 4 kHz harmonic 16 dB louder when dimmed">
 </p>
 
 So there is more audible harmonic energy at exactly the brightness you'd actually run the shelf at. That is the whine. The magnetics and ceramic caps on the board turn that electrical spectrum into an acoustic one.
@@ -132,10 +136,23 @@ I hand-assembled Version 1, QFN gate driver and all, and brought it up on the be
 
 ## Version 1.1
 
-V1.1 (the black ENIG board at the top) folds those lessons in: fixed clearances around the FET pads, a general layout cleanup, and the full Shady Electronics treatment with a 4-layer stackup, a via-stitched perimeter, and a custom octagonal outline.
+V1.1 (the board at the top) folds those lessons in: fixed clearances around the FET pads, a general layout cleanup, and the full Shady Electronics treatment with a 4-layer stackup, a via-stitched perimeter, and a custom octagonal outline. It's assembled, brought up, and running the shelf. Here it is in its enclosure:
 
-<!-- TODO: assembled v1.1 photos when boards arrive -->
-<!-- TODO: v1.1 output FFT at 25kHz + stacked comparison vs original 2kHz FFT with audible band shaded -->
+<p align="center">
+  <img src="media/IMAGES/hero_case.jpg" width="600" alt="Assembled V1.1 board mounted in its round enclosure">
+</p>
+
+### First result
+
+Same mic, same 5 cm distance, 60 second averages, both controllers dimmed, since that's the setting where the original is at its worst:
+
+<p align="center">
+  <img src="media/IMAGES/acoustic_before_after.png" width="700" alt="Acoustic spectrum, original controller vs v1.1, both dimmed: the 2 kHz harmonic comb is gone">
+</p>
+
+The original's 2 kHz drive puts a harmonic comb across the entire audible band. V1.1 has no comb at all, because the fundamental now sits at 25 kHz. Levels are uncalibrated and relative, so the thing to read is the spikes, not the absolute numbers.
+
+<!-- TODO: v1.1 scope FFT of the 25 kHz output to pair with the acoustic result -->
 <!-- TODO: BLE demo gif/clip -->
 
 ## Status
@@ -143,8 +160,8 @@ V1.1 (the black ENIG board at the top) folds those lessons in: fixed clearances 
 - [x] Original controller reverse-engineered, noise mechanism identified
 - [x] V1 designed, assembled, verified silent at 25 kHz
 - [x] V1.1 layout revisions, fabbed
-- [ ] V1.1 assembly and bring-up
-- [ ] Before/after acoustic and FFT comparison
+- [x] V1.1 assembly and bring-up
+- [x] Before/after acoustic comparison
 - [ ] Full video writeup
 
 ## Repo Layout
