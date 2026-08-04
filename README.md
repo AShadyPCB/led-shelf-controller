@@ -162,7 +162,7 @@ The scope tells the same story electrically. Here is the v1.1 output with its FF
 And the silence doesn't cost anything at the input. Input current from the 24 V supply at matched brightness steps, complete systems powered, same supply and strip: v1.1 tracks the original across the range. The small differences at the low end come down to each controller mapping duty over its own brightness range.
 
 <p align="center">
-  <img src="media/IMAGES/current_vs_brightness_matlab.png" width="850" alt="Input current vs brightness, original controller vs v1.1, near identical curves">
+  <img src="media/IMAGES/current_vs_brightness_matlab.png" width="700" alt="Input current vs brightness, original controller vs v1.1, near identical curves">
 </p>
 
 <!-- TODO: BLE demo gif/clip -->
