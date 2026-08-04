@@ -4,7 +4,7 @@
 <p align="center">
 The stock controller on my LED shelf whined, and it got louder as I dimmed it.<br>
 This is how I worked out why, and the silent replacement I built to fix it:<br>
-a 25&nbsp;kHz H-bridge driver with BLE control from my phone, on a custom 4-layer board.
+a 25&nbsp;kHz H-bridge driver with BLE control from my phone, on a custom 4 layer board.
 </p>
 
 <p align="center">
