@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/8797d7e5-76eb-444d-9b2b-a0c18f4ee885
 The shelf is a 24 V tunable-white LED strip driven by an off-the-shelf controller. At full brightness it puts out a faint high-pitched whine. Dim it to a normal, usable level and the whine gets worse, turning into a piercing tone that's hard to ignore once you've heard it.
 
 <p align="center">
-  <img src="media/IMAGES/og_board_closeup.jpeg" width="600" alt="Original controller PCB, opened up">
+  <img src="media/IMAGES/og_board_closeup.jpeg" width="700" alt="Original controller PCB, opened up">
 </p>
 
 So I opened it up and put it on the bench.
@@ -110,7 +110,7 @@ Sliding the colour ratio stretches one side of the window at the expense of the 
 ## Build and Bring-up (Version 1)
 
 <p align="center">
-  <img src="media/IMAGES/v1_pcb_assembled.jpeg" width="600" alt="Version 1 assembled PCB">
+  <img src="media/IMAGES/v1_pcb_assembled.jpeg" width="700" alt="Version 1 assembled PCB">
 </p>
 
 I hand-assembled Version 1, QFN gate driver and all, and brought it up on the bench. It worked: clean PWM on the bridge, and the strip ran silently at 25 kHz.
