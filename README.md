@@ -143,7 +143,7 @@ V1.1 (the board at the top) folds those lessons in: fixed clearances around the 
   <img src="media/IMAGES/hero_case.jpg" width="600" alt="Assembled V1.1 board mounted in its round enclosure">
 </p>
 
-### First result
+### Results
 
 Same mic, same 5 cm distance, 60 second averages, both controllers dimmed, since that's the setting where the original is at its worst:
 
@@ -153,7 +153,18 @@ Same mic, same 5 cm distance, 60 second averages, both controllers dimmed, since
 
 The original's 2 kHz drive puts a harmonic comb across the entire audible band. V1.1 has no comb at all, because the fundamental now sits at 25 kHz. Levels are uncalibrated and relative, so the thing to read is the spikes, not the absolute numbers.
 
-<!-- TODO: v1.1 scope FFT of the 25 kHz output to pair with the acoustic result -->
+The scope tells the same story electrically. Here is the v1.1 output with its FFT: the fundamental sits at 25 kHz and every harmonic lands above it, so nothing falls in the audible band.
+
+<p align="center">
+  <img src="media/IMAGES/new_board_25khz_fft.png" width="700" alt="v1.1 output waveform and FFT: 25 kHz fundamental, all harmonics above the audible band">
+</p>
+
+And the silence doesn't cost anything at the input. Input current from the 24 V supply at matched brightness steps, complete systems powered, same supply and strip: v1.1 tracks the original across the range. The small differences at the low end come down to each controller mapping duty over its own brightness range.
+
+<p align="center">
+  <img src="media/IMAGES/current_vs_brightness.png" width="700" alt="Input current vs brightness, original controller vs v1.1, near identical curves">
+</p>
+
 <!-- TODO: BLE demo gif/clip -->
 
 ## Status
@@ -162,7 +173,8 @@ The original's 2 kHz drive puts a harmonic comb across the entire audible band. 
 - [x] V1 designed, assembled, verified silent at 25 kHz
 - [x] V1.1 layout revisions, fabbed
 - [x] V1.1 assembly and bring-up
-- [x] Before/after acoustic comparison
+- [x] Before/after comparison, acoustic and electrical
+- [x] Current draw comparison at matched brightness
 - [ ] Full video writeup
 
 ## Repo Layout
