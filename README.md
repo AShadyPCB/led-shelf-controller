@@ -178,22 +178,4 @@ And the silence doesn't cost anything at the input. Input current from the 24 V 
   <img src="media/IMAGES/current_vs_brightness_matlab.png" width="700" alt="Input current vs brightness, original controller vs v1.1, near identical curves">
 </p>
 
-<!-- TODO: BLE demo gif/clip -->
 
-## Status
-
-- [x] Original controller reverse-engineered, noise mechanism identified
-- [x] V1 designed, assembled, verified silent at 25 kHz
-- [x] V1.1 layout revisions, fabbed
-- [x] V1.1 assembly and bring-up
-- [x] Before/after comparison, acoustic and electrical
-- [x] Current draw comparison at matched brightness
-- [ ] Full video writeup
-
-## Repo Layout
-
-```
-hardware/   schematics, layout notes, BOM
-firmware/   STM32 project (timer scheme, BLE UART protocol)
-media/      scope captures, photos, diagrams
-```
