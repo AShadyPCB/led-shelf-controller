@@ -130,7 +130,7 @@ I hand-assembled Version 1, QFN gate driver and all, and brought it up on the be
 **A trace too close to a FET pad.** V1 ran a thin trace right up against an inner MOSFET pad, which caused solder bridges during assembly. I ended up chasing those down under the microscope.
 
 <p align="center">
-  <img src="media/IMAGES/fault_trace_fet_pad_short.jpg" width="600" alt="V1 layout: trace routed too close to FET pad, causing shorts">
+  <img src="media/IMAGES/fault_trace_fet_pad_short.jpg" width="700" alt="Microscope view of the Q2 pad: trace routed too close, causing solder bridges">
 </p>
 
 **Probing a live switch node killed the driver.** While I was capturing SHA/SHB waveforms on the working V1 board, the gate driver died, almost certainly from a momentary probe or ground-clip short on a live switch node. The rework to replace it bridged, and pulling the dead part lifted the QFN pads with it. What I took from it: use spring-tip probe grounds, current-limit the first power-up, and leave the risky measurements for last, once the photos are already taken.
