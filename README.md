@@ -8,7 +8,7 @@ a 25&nbsp;kHz H-bridge driver with BLE control from my phone, on a custom 4 laye
 </p>
 
 <p align="center">
-  <img src="media/IMAGES/hero_shot_main.jpg" width="600" alt="Shady Electronics LED Shelf Controller v1.1, assembled board">
+  <img src="media/IMAGES/hero_case.jpg" width="600" alt="Shady Electronics LED Shelf Controller v1.1, assembled board in its enclosure">
 </p>
 
 <h3 align="center">🔊 Audio demo, sound on</h3>
@@ -152,10 +152,10 @@ I hand-assembled Version 1, QFN gate driver and all, and brought it up on the be
 
 ## Version 1.1
 
-V1.1 (the board at the top) folds those lessons in: fixed clearances around the FET pads, a general layout cleanup, and the full Shady Electronics treatment with a 4-layer stackup, a via-stitched perimeter, and a custom octagonal outline. It's assembled, brought up, and running the shelf. Here it is in its enclosure:
+V1.1 (the board at the top) folds those lessons in: fixed clearances around the FET pads, a general layout cleanup, and the full Shady Electronics treatment with a 4-layer stackup, a via-stitched perimeter, and a custom octagonal outline. It's assembled, brought up, and running the shelf:
 
 <p align="center">
-  <img src="media/IMAGES/hero_case.jpg" width="600" alt="Assembled V1.1 board mounted in its round enclosure">
+  <img src="media/IMAGES/hero_shot_main.jpg" width="600" alt="Assembled V1.1 board">
 </p>
 
 ### Results
