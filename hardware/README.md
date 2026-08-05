@@ -43,5 +43,3 @@ board made in KiCad.
 
 The strip is driven as a three level differential waveform (+24 V / 0 V / -24 V) at 25 kHz,
 so the fundamental and its harmonics sit above the audible band.
-
-<!-- TODO: gerbers and assembly drawings -->
