@@ -120,7 +120,7 @@ Two user settings map onto two compare values. Brightness is y, the number of co
 
 Sliding the colour ratio stretches one side of the window at the expense of the other, and lowering y squeezes both together while growing the 0 V tail.
 
-<!-- TODO: link the timer configuration source file here once the firmware project is committed -->
+The implementation is in [firmware/main.c](firmware/main.c). It all runs on one timer, TIM1, with three channels playing the A, B and C roles from the figure. The BLE protocol and the flash trick that remembers your settings across power loss are written up in [firmware/](firmware/).
 
 ## Build and Bring-up (Version 1)
 
