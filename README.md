@@ -136,23 +136,22 @@ I hand assembled Version 1.0, soldering the QFN chip using a heat gun which was 
 
 ## What Went Wrong Along the Way
 
-**A hidden open joint under the QFN.** The board powered up, but the bridge output was distorted in a way that looked like half a dozen different faults at once. The real cause was the MP6528's DT (dead-time) pin, which wasn't making contact with its programming resistor. One bad joint under the QFN from an uneven hot-air reflow. Finding it took much longer than fixing it. Reflowing on a hot plate gave reliable joints and the distortion went away.
+**A hidden open joint under the QFN.** The board powered up, but the bridge output was distorted in a way that looked like half a dozen different faults at once. The real cause was the MP6528's DT (dead time) pin, which wasn't making contact with its programming resistor. One bad joint under the QFN from an uneven hot air reflow. Finding it took much longer than fixing it. Reflowing on a hot plate gave reliable joints and the distortion went away.
 
 <p align="center">
   <img src="media/IMAGES/fault_dtpin_distorted_pwm.png" width="600" alt="Distorted PWM caused by a floating dead-time pin">
 </p>
 
-**A trace too close to a FET pad.** V1 ran a thin trace right up against an inner MOSFET pad, which caused solder bridges during assembly. I ended up chasing those down under the microscope.
+**A trace too close to a FET pad.** V1 ran a thin trace right up against an inner MOSFET pad, which caused solder bridges during assembly. It took a lot of probing and investigation under the microscope to identify it.
 
 <p align="center">
   <img src="media/IMAGES/fault_trace_fet_pad_short.jpg" width="700" alt="Microscope view of the Q2 pad: trace routed too close to the pad, causing solder bridges">
 </p>
 
-**Probing a live switch node killed the driver.** While I was capturing SHA/SHB waveforms on the working V1 board, the gate driver died, almost certainly from a momentary probe or ground-clip short on a live switch node. The rework to replace it bridged, and pulling the dead part lifted the QFN pads with it. What I took from it: use spring-tip probe grounds, current-limit the first power-up, and leave the risky measurements for last, once the photos are already taken.
+**Probing a live switch node killed the driver.** While I was capturing SHA/SHB waveforms on the working V1 board, the gate driver died, almost certainly from a momentary probe or ground clip short on a live switch node. The rework to replace it bridged, and pulling the dead part lifted the QFN pads with it. What I took from it: use spring tip probe grounds and leave the risky measurements for last, once the photos are already taken.
 
 ## Version 1.1
-
-V1.1 (the board at the top) folds those lessons in: fixed clearances around the FET pads, a general layout cleanup, and the full Shady Electronics treatment with a 4-layer stackup, a via-stitched perimeter, and a custom octagonal outline. It's assembled, brought up, and running the shelf. Here it is in its enclosure:
+V1.1 fixed clearances around the FET pads and was designed in Altium with a via stitched perimeter and a custom octagonal outline that fits the original controller's round enclosure. Here it is in the enclosure:
 
 <p align="center">
   <img src="media/IMAGES/hero_case.jpg" width="600" alt="Assembled V1.1 board mounted in its round enclosure">
@@ -174,7 +173,7 @@ The scope tells the same story electrically. Here is the v1.1 output with its FF
   <img src="media/IMAGES/new_board_25khz_fft.png" width="700" alt="v1.1 output waveform and FFT: 25 kHz fundamental, all harmonics above the audible band">
 </p>
 
-And the silence doesn't cost anything at the input. Input current from the 24 V supply at matched brightness steps, complete systems powered, same supply and strip: v1.1 tracks the original across the range. The small differences at the low end come down to each controller mapping duty over its own brightness range.
+ The reduced noise and additional features don't come at the cost of more power loss. V1.1 matches and even outperforms the stock controller in current draw at equivalent brightness operating levels as denoted in the graph below.
 
 <p align="center">
   <img src="media/IMAGES/current_vs_brightness_matlab.png" width="700" alt="Input current vs brightness, original controller vs v1.1, near identical curves">
