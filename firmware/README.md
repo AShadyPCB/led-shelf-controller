@@ -23,7 +23,7 @@ giving a 25 kHz period of 40 slots at 1 µs each. Brightness and colour resolve 
 steps. The full walkthrough is in the root README's "PWM generation problem" section.
 
 The main loop also refuses to output pulses narrower than 5 slots, they just get rounded
-down to 0 V. Runt pulses through a power bridge aren't worth 12.5 % of one brightness step.
+down to 0 V. Runt pulses through a power bridge aren't worth 12.5 % of one brightness step
 
 ## BLE UART protocol
 
