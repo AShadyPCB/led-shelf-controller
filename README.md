@@ -3,8 +3,7 @@
 
 <p align="center">
 The stock controller on my LED shelf made a high pitched whine, and it got louder as I dimmed it.<br>
-This is how I worked out why, and the silent replacement I built to fix it:<br>
-a 25&nbsp;kHz H-bridge driver with BLE control from my phone, on a custom 4 layer board.
+This README documents how I figured out why and how I designed the solution: a 25&nbsp;kHz H-bridge driver with BLE control from my phone, on a custom 4 layer board.
 </p>
 
 <p align="center">
@@ -23,7 +22,7 @@ https://github.com/user-attachments/assets/8797d7e5-76eb-444d-9b2b-a0c18f4ee885
 
 ## The Problem
 
-The shelf is a 24 V tunable-white LED strip driven by an off-the-shelf controller. At full brightness it puts out a faint high-pitched whine. Dim it to a normal, usable level and the whine gets worse, turning into a piercing tone that's hard to ignore once you've heard it.
+The shelf is a 24 V tunable white/orange light LED strip driven by an off the shelf controller. At full brightness it lets out a high pitched whine and when you dim it to a normal, usable level the whine gets even worse!
 
 <p align="center">
   <img src="media/IMAGES/og_board_closeup.jpeg" width="700" alt="Original controller PCB, opened up">
@@ -76,7 +75,7 @@ The dimming behaviour makes sense in the frequency domain too. Adding 0 V dwell 
   <img src="media/IMAGES/og_fft_lowbrightness_harmonics.png" width="600" alt="FFT at low brightness: 4th, 8th and 12th harmonics increased">
 </p>
 
-The microphone agrees. Same mic at 5 cm, 60 second averages of the acoustic spectrum, dimmed versus max brightness: the 4 kHz harmonic comes up 16 dB when the strip is dimmed.
+And the audio data supports this theory. Recording the controller with the same mic setup as in the audio demo, 60 second averages of the acoustic spectrum, dimmed versus max brightness: shows the 4 kHz harmonic comes up 16 dB when the strip is dimmed.
 
 <p align="center">
   <img src="media/IMAGES/acoustic_dim_vs_max_matlab.png" width="700" alt="Acoustic spectrum of the original controller, dimmed vs max brightness, 4 kHz harmonic 16 dB louder when dimmed">
@@ -84,7 +83,7 @@ The microphone agrees. Same mic at 5 cm, 60 second averages of the acoustic spec
 
 So there is more audible harmonic energy at exactly the brightness you'd actually run the shelf at. That is the whine. The magnetics and ceramic caps on the board turn that electrical spectrum into an acoustic one.
 
-The fix follows directly: keep the same drive scheme, but move the fundamental above the range human ears can hear.
+So the fix is to use the same drive scheme but move the switching frequency and harmonics out of the audible band.
 
 ## The Replacement Design
 
@@ -128,7 +127,8 @@ The implementation is in [firmware/main.c](firmware/main.c). It all runs on one 
   <img src="media/IMAGES/v1_pcb_assembled.jpeg" width="700" alt="Version 1 assembled PCB">
 </p>
 
-I hand-assembled Version 1, QFN gate driver and all, and brought it up on the bench. It worked: clean PWM on the bridge, and the strip ran silently at 25 kHz.
+I hand assembled Version 1.0, soldering the QFN chip using a heat gun which was a painful learning curve. The image below shows me testing the PWM control with the board connected to the STM32 dev board via jumper wires.
+
 
 <p align="center">
   <img src="media/IMAGES/v1_bench_working_pwm.jpeg" width="600" alt="Version 1 on the bench producing clean PWM">
