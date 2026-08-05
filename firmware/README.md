@@ -53,4 +53,3 @@ comes up exactly how you left it.
 PWM starts first, then the gate driver enable pins go high a few tens of ms later, so the
 bridge never switches on undefined gate signals.
 
-<!-- TODO: rest of the CubeIDE project (ioc, linker script) if anyone wants to build it -->
