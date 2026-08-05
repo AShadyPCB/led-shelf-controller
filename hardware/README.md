@@ -27,9 +27,9 @@ assembled and working before it was retired (see the failure section of the
   </tr>
 </table>
 
-V1.1 moved to a 4 layer stackup with a via stitched perimeter and a custom octagonal
+V1.1 moved to a 4 layer stackup, designed in Altium with a via stitched perimeter and a custom octagonal
 outline that fits the original controller's round enclosure. V1 was a simpler rectangular
-2 layer board.
+board made in KiCad.
 
 ## Core parts
 
