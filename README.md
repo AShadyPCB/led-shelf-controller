@@ -104,6 +104,8 @@ Everything runs off the 24 V brick. An MP2459 buck makes the 3.3 V rail for the 
 | BLE<br><sub><b>RNBD350PE-I/100</b></sub> | Bluetooth LE 5.2 module. Relays app commands to the STM32 over UART. |
 | Logic rail<br>**MP2459GJ-Z** | 0.5 A, 480 kHz buck. Steps the 24 V brick down to the logic rail. |
 
+Full schematic, BOM and board renders are in [hardware/](hardware/).
+
 ### The PWM generation problem
 
 The strip needs three levels in each period: +24 V for one colour, then -24 V for the other, then 0 V for the rest of the period to set brightness. A normal complementary PWM pair only gives two states, so the waveform is synthesized from three timer channels.
