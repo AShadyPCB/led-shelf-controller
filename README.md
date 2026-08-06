@@ -22,7 +22,7 @@ https://github.com/user-attachments/assets/8797d7e5-76eb-444d-9b2b-a0c18f4ee885
 
 ## The Problem
 
-The shelf is a 24 V tunable white/orange light LED strip driven by an off the shelf controller. At full brightness it lets out a high pitched whine and when you dim it to a normal, usable level the whine gets even worse!
+The shelf is a 24 V tunable white/orange light LED strip driven by an off the shelf controller. At full brightness it lets out a high pitched whine and when you dim it to a normal usable level, the whine gets even worse!
 
 <p align="center">
   <img src="media/IMAGES/og_board_closeup.jpeg" width="700" alt="Original controller PCB, opened up">
@@ -105,7 +105,7 @@ Everything runs off the 24 V brick. An MP2459 buck makes the 3.3 V rail for the 
 
 Full schematic, BOM and board renders are in [hardware/](hardware/).
 
-### The PWM generation problem
+### Generating the 3 Level PWM
 
 The strip needs three levels in each period: +24 V for one colour, then -24 V for the other, then 0 V for the rest of the period to set brightness. A normal complementary PWM pair only gives two states, so the waveform is synthesized from three timer channels.
 
@@ -134,7 +134,7 @@ I hand assembled Version 1.0, soldering the QFN chip using a heat gun which was 
   <img src="media/IMAGES/v1_bench_working_pwm.jpeg" width="600" alt="Version 1 on the bench producing clean PWM">
 </p>
 
-## What Went Wrong Along the Way
+## Trials and Tribulations
 
 **A hidden open joint under the QFN.** The board powered up, but the bridge output was distorted in a way that looked like half a dozen different faults at once. The real cause was the MP6528's DT (dead time) pin, which wasn't making contact with its programming resistor. One bad joint under the QFN from an uneven hot air reflow. Finding it took much longer than fixing it. Reflowing on a hot plate gave reliable joints and the distortion went away.
 
